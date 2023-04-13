@@ -9,27 +9,27 @@
 <body>
 <h1 style="color: #4b5563">Create New Post</h1>
 
-@if ($errors->any())
-    <div class="alert alert-danger">
-        <ul>
-            @foreach ($errors->all() as $error)
-                <li>{{ $error }}</li>
-            @endforeach
-        </ul>
-    </div>
-@endif
+{{--@if ($errors->any())--}}
+{{--    <div class="alert alert-danger">--}}
+{{--        <ul>--}}
+{{--            @foreach ($errors->all() as $error)--}}
+{{--                <li>{{ $error }}</li>--}}
+{{--            @endforeach--}}
+{{--        </ul>--}}
+{{--    </div>--}}
+{{--@endif--}}
 
 <form action="{{route('post.store')}}" method="post">
     @csrf
     <label>
-        <input id="title" type="text" placeholder="Title" name="title" class="@error('title') is-invalid @enderror">
+        <input id="title" type="text" placeholder="Title" name="title" value="{{old('title')}}" class="@error('title') is-invalid @enderror">
         @error('title')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror
 
     </label><br><br>
     <label>
-        <input id="body" placeholder="Body" type="text" name="body" class="@error('body') is-invalid @enderror">
+        <input id="body" placeholder="Body" type="text" name="body" value="{{old('body')}}" class="@error('body') is-invalid @enderror">
         @error('body')
         <div class="alert alert-danger">{{ $message }}</div>
         @enderror

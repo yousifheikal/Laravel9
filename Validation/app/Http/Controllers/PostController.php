@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StorePostRequest;
 use App\Models\Post;
 use Illuminate\Http\Request;
 
@@ -29,13 +30,13 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StorePostRequest $request)
     {
         // Validation
-        $validate = $request->validate([
-            'title' => 'required|max:5',
-            'body' => 'required',
-        ]);
+//        $validation = $request->validate([
+//            'title' => "bail|required|max:5",
+//            'body' => 'required',
+//        ]);
 
         // Insert Data in DataBase
         $post = new Post();
